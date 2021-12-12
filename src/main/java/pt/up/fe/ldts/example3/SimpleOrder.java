@@ -8,6 +8,13 @@ public class SimpleOrder {
         this.price = price;
     }
 
+    private double applyDiscount() {
+        if (discount.getFixed() > 0) price = discount.getFixed() > price ? 0 : price - discount.getFixed();
+        else if (discount.getPercentage() > 0) price = price - price * discount.getPercentage();
+
+        return price;
+    }
+
     public void setDiscount(Discount discount) {
         this.discount = discount;
     }
@@ -16,6 +23,6 @@ public class SimpleOrder {
         if (discount == null)
             return price;
         else
-            return discount.applyDiscount(price);
+            return applyDiscount();
     }
 }

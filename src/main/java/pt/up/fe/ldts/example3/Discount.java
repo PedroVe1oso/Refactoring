@@ -14,13 +14,11 @@ public class Discount {
         this.fixed = 0;
     }
 
-    public double applyDiscount(double price) {
-        double discountedPrice = price;
+    public int getFixed() {
+        return fixed;
+    }
 
-        if (fixed > 0) discountedPrice = fixed > price ? 0 : price - fixed;
-        else if (percentage > 0) discountedPrice = price - price * percentage;
-        else discountedPrice = price;
-
-        return discountedPrice;
+    public double getPercentage() {
+        return percentage;
     }
 }
