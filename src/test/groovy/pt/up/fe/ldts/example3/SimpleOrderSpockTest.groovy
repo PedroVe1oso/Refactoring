@@ -6,23 +6,17 @@ class SimpleOrderSpockTest extends Specification {
 
     def 'Fixed Discount'() {
         given:
-            def order = new SimpleOrder(100)
+            def order = new SimpleOrder(100, new Discount(10))
 
-        when:
-            order.setDiscount(new Discount(10))
-
-        then:
+        expect:
             90 == order.getTotal()
     }
 
     def 'Percentage Discount'() {
         given:
-            def order = new SimpleOrder(100)
+            def order = new SimpleOrder(100, new Discount(0.2))
 
-        when:
-            order.setDiscount(new Discount(0.2))
-
-        then:
+        expect:
             80 == order.getTotal()
     }
 
